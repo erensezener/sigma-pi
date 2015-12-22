@@ -1,5 +1,5 @@
 %% Workspace and path setup
-parpool;
+% parpool;
 clear;
 filename_to_save = 'comparison_temp.mat';
 addpath(genpath('../3-Q'));
@@ -10,12 +10,13 @@ load('../Data/4D/All4DClean.mat');
 
 %% Parameters
 tic
-number_of_ys = 16;
-n = size(Solutions,1);
+n = 4;
+l = 2^n;
+number_of_ys = 2^(2^n);
 
 
 %% Preprocess data
-ys = zeros(number_of_ys/2,2^n);
+ys = zeros(number_of_ys/2,l);
 
 for i = 1:number_of_ys/2
     ys(i,:) = yCell{i,1};
@@ -26,7 +27,8 @@ end
 results = zeros(number_of_ys/2,4); % [3Q, Heuristic, BS_Heuristic, GA];
 times = zeros(number_of_ys/2,4); % [3Q, Heuristic, BS_Heuristic, GA];
 
-for i = 1:size(results,1)
+% parfor i = 1:10
+parfor i = 1:size(results,1)
     y = yCell{i,1};
     
     result = zeros(1,4);

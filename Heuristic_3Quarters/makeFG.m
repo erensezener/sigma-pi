@@ -150,7 +150,7 @@ else
     
 end;
 
-sol_3Q = sol'
+sol_3Q = sol';
 
 check_positive=D*sol.*y';
 if (N==sum(check_positive>0)),

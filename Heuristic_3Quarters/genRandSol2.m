@@ -87,7 +87,7 @@ for it = 1:MAXIT
         beta=v*G'/(N/2);
         g=zeros(1,norows_G);
         gg=zeros(1,norows_G);
-        
+        %%
         
         g((beta<=0))=-beta(beta<=0)+1;
         gg((beta<=0))=1;
@@ -96,7 +96,7 @@ for it = 1:MAXIT
         gg((beta>0))=beta(beta>0)+1;
 
         
-
+        %%
         %check_is_zero=(-g+gg)-beta
         x=(a+aa)*F+(-g+gg)*G ; % note that xpart=(a+aa)*F
         t=(-a+aa)*F+(g+gg)*G ;
@@ -114,7 +114,7 @@ for it = 1:MAXIT
         beta=v*F'/(N/2);
         a=zeros(1,norows_F);
         aa=zeros(1,norows_F);
-        
+        %%
 %         sr = beta*0;
 %         for k=1:length(beta),
 %             if(beta(k)<=0),
@@ -133,7 +133,8 @@ for it = 1:MAXIT
         sr = floor(rand(1,poslen)*MAXV)+1;
         a(posix)=sr;
         aa(posix)=beta(posix)+sr;
-
+        
+        %%
         %check_is_zero=(-a+aa)-beta
         x=(a+aa)*F+(-g+gg)*G ;
         t=(-a+aa)*F+(g+gg)*G ;%  note that tpart=(g+gg)*G

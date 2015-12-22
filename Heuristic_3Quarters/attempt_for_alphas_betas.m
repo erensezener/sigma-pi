@@ -18,11 +18,11 @@ end
 
 if size(y,2)==1,   y=y'; end;   % make a row vector
 
-if (Fn_1 ~= Gn_1)
-    fprintf('ERROR: Bad input matrices. Number of columns must be the same.\n');
-    fprintf('ERROR: Use the output of Ayir as input to this function\n');
-    return;
-end;
+% if (Fn_1 ~= Gn_1)
+%     fprintf('ERROR: Bad input matrices. Number of columns must be the same.\n');
+%     fprintf('ERROR: Use the output of Ayir as input to this function\n');
+%     return;
+% end;
 
 
 n_1 = Gn_1 ;  % this is equal to the 2^(dim-1) where dim is the original problem dimension
@@ -31,15 +31,17 @@ N = 2*n_1;    % N = 2^dim
 % HERE WE CHECK if F or G is empty, if so we return an easy answer with
 % half the monomials zeroed. Instead recursively Ayir can be applied to the
 % induced lower dimensinal problem and a better result of .75*2^n number of zeros can be obt
+D = recmonsetup(log2(length(y)));
 if (isempty(G)),
     x=(a+aa)*F ;
     t=(-a+aa)*F ;
     sol=[x,t]';
     check_positive=D*sol.*y';
-    if (N==sum(check_positive>0)),
+    if (length(y)==sum(check_positive>0)),
     else
         disp('!!!!!!!!! END OF THE WORLD 1 !!!!!!!!!!');
     end;
+    numzero = sum(sol == 0);
     return;
 end;
 
@@ -48,10 +50,11 @@ if (isempty(F)),
     t=(g+gg)*G ;
     sol=[x,t]';
     check_positive=D*sol.*y';
-    if (N==sum(check_positive>0)),
+    if (length(y)==sum(check_positive>0)),
     else
         disp('!!!!!!!!! END OF THE WORLD 2!!!!!!!!!!');
     end;
+    numzero = sum(sol == 0);
     return;
 end;
 % ##################################################################

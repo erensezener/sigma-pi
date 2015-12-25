@@ -1,7 +1,7 @@
 %% Workspace and path setup
 parpool;
 clear;
-filename_to_save = 'all_4D_with_GA.mat';
+filename_to_save = 'k15_gen200.mat';
 addpath(genpath('../heuristic-share/Data'));
 
 load('4D/All4DClean.mat');

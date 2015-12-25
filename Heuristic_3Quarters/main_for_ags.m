@@ -1,6 +1,7 @@
 %% Workspace and path setup
 parpool;
 clear;
+
 filename_to_save = 'search_for_ks.mat';
 
 addpath(genpath('../heuristic-share/Data'));

@@ -7,11 +7,12 @@ search_wrapper = @(genotype) -1 * attempt_for_alphas_betas(F,G, y , genotype);
 
 integer_indices = 1:length(y);
 lb = ones(1, length(y));
-up = ones(1, length(y)) * length(y)*4; %sort of arbitrary. can be experimented with.
+up = ones(1, length(y)) * 8; %sort of arbitrary. can be experimented with.
 
-options.StallGenLimit = 8*10^2;
+options.StallGenLimit = 10^2;
 options.UseParallel = false;
 options.Generations = length(y) * 10^2;
+options.Display = 'off';
 
 [x,fval,exitflag, output, population, scores] = ga(search_wrapper,length(y),[],[],[],[],lb, up, [], integer_indices, options);
 best_score = min(scores) * (-1);

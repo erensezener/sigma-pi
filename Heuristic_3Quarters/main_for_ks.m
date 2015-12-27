@@ -1,7 +1,7 @@
 %% Workspace and path setup
-parpool;
+parobj = parpool;
 clear;
-filename_to_save = 'search_for_ks.mat';
+filename_to_save = 'search_for_ks_max5_shorter.mat';
 
 addpath(genpath('../heuristic-share/Data'));
 
@@ -9,9 +9,9 @@ load('4D/All4DClean.mat');
 
 %% Config
 
-options.StallGenLimit = 10^4;
+options.StallGenLimit = 6*10^3;
 options.UseParallel = false;
-options.Generations = 2*10^2;
+options.Generations = 10^2;
 options.Display = 'off';
 
 
@@ -44,3 +44,5 @@ end
 %% Save the data
 save(filename_to_save);
 toc
+
+delete(parobj);

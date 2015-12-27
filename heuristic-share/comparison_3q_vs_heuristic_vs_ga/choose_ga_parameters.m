@@ -15,7 +15,7 @@ tic
 sel = [0.8:-0.1:0.5];
 mutrate = logspace(-3, -1, 10);
 last = 100;
-sample_size = 1000;
+sample_size = 4;
 
 n = 4;
 l = 2^n;
@@ -24,8 +24,8 @@ number_of_ys = 2^(2^n);
 %% Preprocess data
 ys = zeros(number_of_ys/2,l);
 
-for i = 1:number_of_ys/2
-    ys(i,:) = yCell{i,1};
+for j = 1:number_of_ys/2
+    ys(j,:) = yCell{j,1};
 end
 
 %% Do the computation
@@ -36,15 +36,17 @@ times = zeros(sample_size, length(sel),length(mutrate));
 indices = randi(number_of_ys/2, sample_size, 1);
 
 %parfor i = 1:12
-for i = indices
+for j = 1:length(indices)
+    indice = indices(j);
     for sel_i = 1:length(sel)
         for mutrate_i = 1:length(mutrate)
             sel_val = sel(sel_i);
             mutrate_val = mutrate(mutrate_i);
-            y = yCell{i,1};
+            y = yCell{indice,1};
             t = cputime;
-            results(i, sel_i,mutrate_i) = simple_ga_parameterized(y', last, sel_val, mutrate_val);
-            times(i, sel_i,mutrate_i) = cputime - t; t = cputime;
+            res = simple_ga_parameterized(y', last, sel_val, mutrate_val);
+            results(j, sel_i,mutrate_i) = res;
+            times(j, sel_i,mutrate_i) = cputime - t; t = cputime;
         end
     end
 end

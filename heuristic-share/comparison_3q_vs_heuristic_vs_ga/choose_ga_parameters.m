@@ -1,5 +1,5 @@
 %% Workspace and path setup
-% poolobj = parpool;
+poolobj = parpool;
 clear;
 
 filename_to_save = 'ga_parameter_search.mat';
@@ -36,7 +36,7 @@ times = zeros(sample_size, length(sel),length(mutrate));
 indices = randi(number_of_ys/2, sample_size, 1);
 
 %parfor i = 1:12
-for i = indices
+parfor i = indices
     for sel_i = 1:length(sel)
         for mutrate_i = 1:length(mutrate)
             sel_val = sel(sel_i);

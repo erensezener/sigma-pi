@@ -1,7 +1,7 @@
 %% Workspace and path setup
-% parpool;
+parpool;
 clear;
-filename_to_save = 'comparison_temp.mat';
+filename_to_save = 'comparison_new.mat';
 addpath(genpath('../3-Q'));
 addpath(genpath('../Data'));
 addpath(genpath('../heuristic_binary_search'));

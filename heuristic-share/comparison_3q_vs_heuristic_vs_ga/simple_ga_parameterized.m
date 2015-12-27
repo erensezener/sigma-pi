@@ -1,16 +1,16 @@
-function [number_of_coefficients, a] = simple_ga(y)
+function [number_of_coefficients, a] = simple_ga_parameterized(y, last, sel, mutrate)
 
 % This is a simple GA written in MATLAB
 % costfunction.m calculates a cost for each row or
 % chromosome in pop. This function must be provided
 % by the user.
+% last: number of generations
+% sel: selection rate
+% mut_rate: mutation rate
 
 N=size(y,2); % number of bits in a chromosome
 M=16; % number of chromosomes must be even
-last=100; % number of generations
-sel=0.5; % selection rate
 M2=2*ceil(sel*M/2); % number of chromosomes kept
-mutrate=0.01; % mutation rate
 nmuts=mutrate*N*(M-1); % number of mutations
 % creates M random chromosomes with N bits
 pop=round(rand(M,N)); % initial population

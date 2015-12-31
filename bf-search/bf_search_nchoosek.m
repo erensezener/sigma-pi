@@ -1,4 +1,4 @@
-function [successes] = bf_search_nchoosek( y, k, number_of_attempts )
+function [successes, as] = bf_search_nchoosek( y, k, number_of_attempts )
 %SORTED_NSHEURISTIC gets vector representation of a Boolean function in
 %{-1,1}^(2^n) form and applies the heuristic algorithm.
 % k is the number of monomials which will be attempted to be eliminated
@@ -17,6 +17,7 @@ options.Algorithm = 'simplex';
 options.Display = 'none';
 
 successes = false(number_of_attempts, l);
+as = zeros(number_of_attempts, l);
 last_success_index = 0;
 
 tic
@@ -52,8 +53,11 @@ for i = 1:number_of_attempts
     if exitflag == 1 && nnz(res>0) == 2^n %if the result is valid
         last_success_index = last_success_index + 1;
         successes(last_success_index, :) = selection_key;
+        as(last_success_index, :) = a;
     end
 end
 successes = successes(1:last_success_index, :); %trim the zeroes of the pre-allocated matrix
+as = as(1:last_success_index, :);
+
 toc
 end

@@ -6,7 +6,7 @@ search_wrapper = @(genotype) attempt_for_ks(y , genotype);
 
 integer_indices = 1:length(y);
 lb = ones(1, length(y));
-up = 3 * ones(1, length(y)); %sort of arbitrary. can be experimented with.
+up = 4 * ones(1, length(y)); %sort of arbitrary. can be experimented with.
 
 
 [x,fval,exitflag, output, population, scores] = ga(search_wrapper,length(y),[],[],[],[],lb, up, [], integer_indices, options);

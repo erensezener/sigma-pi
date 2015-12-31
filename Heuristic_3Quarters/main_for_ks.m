@@ -1,7 +1,7 @@
 %% Workspace and path setup
 parobj = parpool;
 clear;
-filename_to_save = 'search_for_ks_max5_shorter.mat';
+filename_to_save = 'search_for_ks_max7_shorter.mat';
 
 addpath(genpath('../heuristic-share/Data'));
 

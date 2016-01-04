@@ -36,8 +36,8 @@ end
 results = zeros(number_of_ys/2,length(stall_gens));
 times = zeros(number_of_ys/2,length(stall_gens));
 
-parfor i = 1:4
-    % parfor i = 1:size(results,1)
+%parfor i = 1:4
+parfor i = 1:size(results,1)
     y = yCell{i,1};
     time_diffs = ones(1,length(stall_gens));
     temp_results = ones(1,length(stall_gens));

@@ -1,2 +1,2 @@
-main_for_bs;
-main_for_bs2;
+main_for_bs_par;
+main_for_ks_par;

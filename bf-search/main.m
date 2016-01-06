@@ -1,7 +1,7 @@
 %% Workspace and path setup
 parpool;
 clear;
-filename_to_save = 'comparison_temp.mat';
+filename_to_save = '26mon_6d_Bent.mat';
 % addpath(genpath('../heuristic-share/Data/6D'));
 load('../heuristic-share/Data/6D/4BentFunctions.mat');
 

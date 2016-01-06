@@ -74,11 +74,14 @@ if no_rows_G>=no_rows_F,
     gg=zeros(1,no_rows_G);
     %%
     
-    g((beta<=0))=-beta(beta<=0)+r;
-    gg((beta<=0))=r;
+    negix = find(beta<=0);
+    posix = find(beta>0);
     
-    g((beta>0))=r;
-    gg((beta>0))=beta(beta>0)+r;
+    g((beta<=0))=-beta(beta<=0)+r(negix);
+    gg((beta<=0))= r(negix);
+    
+    g((beta>0))=r(posix);
+    gg((beta>0))=beta(beta>0)+ r(posix);
     
     
     %%

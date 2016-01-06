@@ -3,7 +3,7 @@ clear;
 poolobj = parpool;
 
 
-filename_to_save = 'search_for_3Q_all_par.mat';
+filename_to_save = 'search_for_3Q_all_par_1p7.mat';
 
 addpath(genpath('../heuristic-share/Data'));
 
@@ -14,7 +14,7 @@ load('4D/All4DClean.mat');
 options.UseParallel = false;
 options.Generations = 2*10^2;
 options.Display = 'off';
-stall_gens = ceil(logspace(0,2.3,10));
+stall_gens = ceil(logspace(0,1.7,10));
 
 
 %% Parameters
